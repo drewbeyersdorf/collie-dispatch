@@ -76,10 +76,10 @@ def demo():
     pen.gather("build-57", "build", {"rounds": 57}, priority=5)
     pen.gather("post-menagerie", "post", {"channel": "draft"}, priority=5)
     pen.gather("watch-board", "watch", {}, priority=9)  # low priority, would starve
-    skid = pen.shed("skid", kinds={"build"})
-    cali = pen.shed("caliper", kinds={"post"})
-    hark = pen.shed("hark", kinds={"watch"})  # boosted out of starvation
-    for t, ok in ((skid, True), (cali, True), (hark, False)):
+    wren = pen.shed("wren", kinds={"build"})
+    heron = pen.shed("heron", kinds={"post"})
+    magpie = pen.shed("magpie", kinds={"watch"})  # boosted out of starvation
+    for t, ok in ((wren, True), (heron, True), (magpie, False)):
         if t: pen.settle(t.id, ok, "demo")
     ghost = pen.settle("build-57", True, "double-settle attempt")
     assert ghost["settled"] is False
@@ -87,3 +87,4 @@ def demo():
 
 if __name__ == "__main__":
     demo()
+
